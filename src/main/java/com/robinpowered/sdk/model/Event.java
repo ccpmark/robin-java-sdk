@@ -2,7 +2,6 @@ package com.robinpowered.sdk.model;
 
 import com.google.common.base.Objects;
 import com.google.gson.annotations.SerializedName;
-import org.joda.time.DateTime;
 
 import java.util.List;
 
@@ -79,8 +78,8 @@ public class Event implements IdentifiableApiResponseModel<String> {
     private String remoteEventId;
     private String remoteType;
     private CreationType creationType;
-    private DateTime startedAt;
-    private DateTime endedAt;
+    private DateTimeZone start;
+    private DateTimeZone end;
     private Boolean isAllDay;
     private List<Invitable> invitees;
     private Confirmation confirmation;
@@ -187,20 +186,20 @@ public class Event implements IdentifiableApiResponseModel<String> {
         this.creationType = creationType;
     }
 
-    public DateTime getStartedAt() {
-        return startedAt;
+    public DateTimeZone getStart() {
+        return start;
     }
 
-    public void setStartedAt(DateTime startedAt) {
-        this.startedAt = startedAt;
+    public void setStart(DateTimeZone start) {
+        this.start = start;
     }
 
-    public DateTime getEndedAt() {
-        return endedAt;
+    public DateTimeZone getEnd() {
+        return end;
     }
 
-    public void setEndedAt(DateTime endedAt) {
-        this.endedAt = endedAt;
+    public void setEnd(DateTimeZone end) {
+        this.end = end;
     }
 
     public Boolean isAllDay() {
@@ -258,8 +257,8 @@ public class Event implements IdentifiableApiResponseModel<String> {
                 ", remoteEventId='" + remoteEventId + '\'' +
                 ", remoteType='" + remoteType + '\'' +
                 ", creationType=" + creationType +
-                ", startedAt=" + startedAt +
-                ", endedAt=" + endedAt +
+                ", start=" + start +
+                ", end=" + end +
                 ", isAllDay=" + isAllDay +
                 ", invitees=" + invitees +
                 '}';
@@ -278,19 +277,19 @@ public class Event implements IdentifiableApiResponseModel<String> {
         private final String ownerRef;
         private final String title;
         private final String description;
-        private final DateTime startedAt;
-        private final DateTime endedAt;
+        private final DateTimeZone start;
+        private final DateTimeZone end;
         private final boolean isAllDay;
         private final List<Invitable> invitees;
 
-        public Booking(String ownerRef, String title, String description, DateTime startedAt, DateTime endedAt,
+        public Booking(String ownerRef, String title, String description, DateTimeZone start, DateTimeZone end,
                        boolean isAllDay, List<Invitable> invitees) {
 
             this.ownerRef = ownerRef;
             this.title = title;
             this.description = description;
-            this.startedAt = startedAt;
-            this.endedAt = endedAt;
+            this.start = start;
+            this.end = end;
             this.isAllDay = isAllDay;
             this.invitees = invitees;
         }

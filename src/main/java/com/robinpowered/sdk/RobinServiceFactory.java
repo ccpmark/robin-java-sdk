@@ -9,14 +9,10 @@ import com.robinpowered.sdk.model.Account;
 import com.robinpowered.sdk.model.Identifier;
 import com.robinpowered.sdk.model.Invitable;
 import com.robinpowered.sdk.model.Urn;
-import com.robinpowered.sdk.model.adapter.AccountReferenceAdapter;
-import com.robinpowered.sdk.model.adapter.IdentifierAdapter;
-import com.robinpowered.sdk.model.adapter.InvitableAdapter;
-import com.robinpowered.sdk.model.adapter.JodaDateTimeAdapter;
-import com.robinpowered.sdk.model.adapter.RobinTypeAdapterFactory;
-import com.robinpowered.sdk.model.adapter.UrnAdapter;
+import com.robinpowered.sdk.model.adapter.*;
 import com.squareup.okhttp.HttpUrl;
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 import retrofit.client.Client;
@@ -64,6 +60,7 @@ public class RobinServiceFactory {
                 // Set our naming policy to transform underscores <-> camelCase
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
                 .registerTypeAdapter(DateTime.class, new JodaDateTimeAdapter())
+                .registerTypeAdapter(DateTimeZone.class, new JodaDateTimeZoneAdapter())
                 .registerTypeAdapter(Invitable.class, new InvitableAdapter())
                 .registerTypeAdapter(Identifier.class, new IdentifierAdapter())
                 .registerTypeAdapterFactory(new RobinTypeAdapterFactory())

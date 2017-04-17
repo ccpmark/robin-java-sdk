@@ -1,7 +1,6 @@
 package com.robinpowered.sdk.model;
 
 import com.google.common.base.Objects;
-import org.joda.time.DateTime;
 
 /**
  * A simplified {@link Event}.
@@ -24,8 +23,8 @@ public class SimpleEvent implements ApiResponseModel {
      */
 
     private String id;
-    private DateTime startedAt;
-    private DateTime endedAt;
+    private DateTimeZone start;
+    private DateTimeZone end;
 
 
     /**
@@ -36,13 +35,13 @@ public class SimpleEvent implements ApiResponseModel {
      * Constructs a SimpleEvent.
      *
      * @param id The id of the event.
-     * @param startedAt When the event started.
-     * @param endedAt When the event ended.
+     * @param start When the event started.
+     * @param end When the event ended.
      */
-    public SimpleEvent(String id, DateTime startedAt, DateTime endedAt) {
+    public SimpleEvent(String id, DateTimeZone start, DateTimeZone end) {
         this.id = id;
-        this.startedAt = startedAt;
-        this.endedAt = endedAt;
+        this.start = start;
+        this.end = end;
     }
 
     @Override
@@ -61,11 +60,11 @@ public class SimpleEvent implements ApiResponseModel {
         return id;
     }
 
-    public DateTime getStartedAt() {
-        return startedAt;
+    public DateTimeZone getStart() {
+        return start;
     }
 
-    public DateTime getEndedAt() {
-        return endedAt;
+    public DateTimeZone getEnd() {
+        return end;
     }
 }
